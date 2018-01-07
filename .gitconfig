@@ -1,0 +1,8 @@
+[user]
+	name = Ran Tao
+	email = rantaoca@google.com
+[color]
+	ui = auto
+[alias]
+	s = status
+	amend = commit -a --amend --no-edit
