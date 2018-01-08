@@ -1,0 +1,5 @@
+Setup
+=====
+ssh-keygen -t rsa -b 4096 -C "rantaoca@gmail.com"
+cat ~/.ssh/id_rsa.pub
+https://github.com/settings/ssh/new
