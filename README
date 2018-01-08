@@ -3,3 +3,7 @@ Setup
 ssh-keygen -t rsa -b 4096 -C "rantaoca@gmail.com"
 cat ~/.ssh/id_rsa.pub
 https://github.com/settings/ssh/new
+
+mkdir ~/.ranconf
+cd ~/.ranconf
+git clone git@github.com:rantaoca/nix-profile.git
