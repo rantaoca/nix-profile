@@ -16,6 +16,9 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" Ignore case sensitivy on searches
+set ignorecase
+
 " Automatically change directory to the current file.
 set autochdir
 
