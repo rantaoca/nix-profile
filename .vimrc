@@ -16,17 +16,37 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" Ignore case sensitivy on searches
+" Set indent to 2 spaces
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+" Ignore case sensitivity on searches
 set ignorecase
 
 " Automatically change directory to the current file.
 set autochdir
 
-" Plugin specific settings
+" Set highlight characters over 80
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/ 
+
+" Search and replace hotkey with \s
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
 " Remove netrw directory listing header
 let g:netrw_banner = 0
-let g:netrw_browse_split = 2
-let g:netrw_winsize = 20
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 80
+let g:netrw_altv = 1
+
+
+"================================================================
+" Plugins
+
+
+" Plugin specific settings
 
 " Airline
 " Enable buffers to show as tabs when no tabs are active
@@ -46,11 +66,9 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
-Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
 
