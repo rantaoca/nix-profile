@@ -43,6 +43,12 @@ let g:netrw_altv = 1
 
 
 "================================================================
+" Custom Commands
+
+" \v to paste from clipboard.
+nnoremap <Leader>v :set paste<CR>
+
+"================================================================
 " Plugins
 
 
