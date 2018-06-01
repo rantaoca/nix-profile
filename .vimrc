@@ -25,21 +25,33 @@ set expandtab
 " Ignore case sensitivity on searches
 set ignorecase
 
+" Show hybrid line numbers
+set number relativenumber
+
 " Automatically change directory to the current file.
 set autochdir
 
+" Enable mouse mode
+set mouse=a
+
 " Set highlight characters over 80
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/ 
+match OverLength /\%81v.\+/
 
 " Search and replace hotkey with \s
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
+" Enable paste mode
+nnoremap <Leader>p :set invpaste<cr>
 
 " Remove netrw directory listing header
 let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 80
 let g:netrw_altv = 1
+
+" Sort with files with .h and .cc next to each other.
+let g:netrw_sort_sequence = '[\/]$,\<core\%(\.\d\+\)\=\>,\.(h|cc)$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$'
 
 
 "================================================================
