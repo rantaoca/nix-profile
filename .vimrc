@@ -44,6 +44,16 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " Enable paste mode
 nnoremap <Leader>p :set invpaste<cr>
 
+" Diff unsaved changes
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
 " Remove netrw directory listing header
 let g:netrw_banner = 0
 let g:netrw_browse_split = 4

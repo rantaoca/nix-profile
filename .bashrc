@@ -1,6 +1,7 @@
 alias bell="echo -e '\a'"
 alias sourcebash="source ~/.bashrc"
 alias ranbash="vim ~/.ranconf/.bashrc && sourcebash"
+alias adblog="adb logcat -c; adb logcat"
 
 # Disable C-s from freezing the terminal
 stty -ixon
