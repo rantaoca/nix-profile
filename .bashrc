@@ -1,5 +1,6 @@
 alias bell="echo -e '\a'"
 alias sourcebash="source ~/.bashrc"
+alias editbash="vim ~/.bash_aliases; source ~/.bashrc"
 alias ranbash="vim ~/.ranconf/.bashrc && sourcebash"
 
 # Disable C-s from freezing the terminal
