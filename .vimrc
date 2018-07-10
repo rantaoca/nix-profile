@@ -5,16 +5,16 @@ set hidden
 nnoremap <silent> vv <C-w>v
 
 " Disable Arrow keys in Escape mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+"map <up> <nop>
+"map <down> <nop>
+"map <left> <nop>
+"map <right> <nop>
 
 " Disable Arrow keys in Insert mode
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+"imap <up> <nop>
+"imap <down> <nop>
+"imap <left> <nop>
+"imap <right> <nop>
 
 " Set indent to 2 spaces
 set tabstop=2
@@ -37,6 +37,9 @@ set mouse=a
 " Set highlight characters over 80
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+" Set text width to 80
+set tw=80
 
 " Search and replace hotkey with \s
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
