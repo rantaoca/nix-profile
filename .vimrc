@@ -44,7 +44,6 @@ set tw=80
 " Search and replace hotkey with \s
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
-<<<<<<< HEAD
 " Paste from system clipboard
 nnoremap <Leader>p :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
