@@ -44,8 +44,12 @@ set tw=80
 " Search and replace hotkey with \s
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
-" Enable paste mode
-nnoremap <Leader>p :set invpaste<cr>
+" Paste from system clipboard
+nnoremap <Leader>p :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+
+" Copy selection to system clipboard
+nnoremap <Leader>y :.w !pbcopy<CR><CR>
+vnoremap <Leader>y :'<,'>w !pbcopy<CR><CR>
 
 " Diff unsaved changes
 function! s:DiffWithSaved()
@@ -66,12 +70,6 @@ let g:netrw_altv = 1
 " Sort with files with .h and .cc next to each other.
 let g:netrw_sort_sequence = '[\/]$,\<core\%(\.\d\+\)\=\>,\.(h|cc)$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$'
 
-
-"================================================================
-" Custom Commands
-
-" \v to paste from clipboard.
-nnoremap <Leader>v :set paste<CR>
 
 "================================================================
 " Plugins
