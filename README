@@ -8,3 +8,7 @@ cd ~
 git clone git@github.com:rantaoca/nix-profile.git
 mv nix-profile .ranconf
 cd .ranconf
+# optional, installs tmux, vim, and git
+sudo bash install.sh
+bash setup.sh
+

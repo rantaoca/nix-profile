@@ -44,12 +44,22 @@ set tw=80
 " Search and replace hotkey with \s
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
+<<<<<<< HEAD
 " Paste from system clipboard
 nnoremap <Leader>p :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
 " Copy selection to system clipboard
 nnoremap <Leader>y :.w !pbcopy<CR><CR>
 vnoremap <Leader>y :'<,'>w !pbcopy<CR><CR>
+
+" Replace word with copy buffer 0\s
+nnoremap <Leader>r ciw<C-r>0<Esc>
+
+" Replace selected text with copy buffer 0\s
+vnoremap <Leader>r c<C-r>0<Esc>
+
+" Enable paste mode
+nnoremap <Leader>p :set invpaste<cr>
 
 " Diff unsaved changes
 function! s:DiffWithSaved()
@@ -70,18 +80,31 @@ let g:netrw_altv = 1
 " Sort with files with .h and .cc next to each other.
 let g:netrw_sort_sequence = '[\/]$,\<core\%(\.\d\+\)\=\>,\.(h|cc)$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$'
 
+" Change Vim's folding syntax color
+hi Folded ctermbg=black
 
 "================================================================
-" Plugins
+" Custom Commands
 
+" \v to paste from clipboard.
+nnoremap <Leader>v :set paste<CR>
 
-" Plugin specific settings
+" \y in visual mode to yank selection into tmux buffer
+function! TmuxSharedYank()
+  " Send the contents of the 't' register to a temporary file, invoke
+  " copy to tmux using load-buffer.
+  let tmpfile = tempname()
+  call writefile(split(@t, '\n'), tmpfile, 'b')
+  call system('tmux load-buffer '.shellescape(tmpfile))
+  call delete(tmpfile)
+endfunction
+vnoremap <Leader>y "ty:call TmuxSharedYank()<cr>
 
-" Airline
-" Enable buffers to show as tabs when no tabs are active
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 0
-let g:airline_powerline_fonts = 1
+" tab in normal mode to switch to last opened buffer.
+nmap <tab> :b#<cr>
+
+"================================================================
+" Vim-Plug plugin manager
 
 " Auto install vim plug, plugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -101,3 +124,16 @@ call plug#begin('~/.vim/plugged')
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+" Plugin specific settings
+
+" Airline
+" Enable buffers to show as tabs when no tabs are active
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 0
+let g:airline_powerline_fonts = 1
+"===============================================================
+" Pathogen Plugin Manager
+execute pathogen#infect()
+
+" Nerd Tree set default split to go to the right instead of left
+set splitright
