@@ -2,9 +2,9 @@
 
 echo Installing packages...
 sudo apt-get install curl vim tmux git \
-  gnome-tweak-tool \ # For swapping esc/caps
-  fonts-powerline \  # For vim Airline font
-  htop              # For viewing processes
+  gnome-tweak-tool `# For swapping esc/caps` \
+  fonts-powerline  `# For vim Airline font` \
+  htop             `# For viewing processes`
 
 sudo apt-get install ripgrep # Only available on Ubuntu 18+
 
