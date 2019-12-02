@@ -3,11 +3,17 @@ Setup
 ssh-keygen -t rsa -b 4096 -C "rantaoca@gmail.com"
 cat ~/.ssh/id_rsa.pub
 https://github.com/settings/ssh/new
+git clone git@github.com:rantaoca/nix-profile.git ~/.ranconf
+~/.ranconf/setup.sh
 
-cd ~
-git clone git@github.com:rantaoca/nix-profile.git
-mv nix-profile .ranconf
-cd .ranconf
-# optional, installs tmux, vim, and git
-sudo bash setup.sh
+# Install vim plugins by running :PlugInstall in a vim session.
+
+
+Remap escape/caps
+=================
+On Ubuntu >18.04:
+$ gnome-tweaks
+Keyboard & Mouse > Additional Layout Options > Caps Lock Behavior
+
+
 

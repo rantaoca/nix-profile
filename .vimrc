@@ -1,5 +1,13 @@
+set nocompatible              " be iMproved, required
+filetype off
+filetype plugin indent on 
+
 " Allowing unsaved hidden buffers.
 set hidden
+
+" Theme
+set background=dark
+set term=xterm-256color
 
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
@@ -21,6 +29,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set autoread
+set autoindent
+
+set wrap
 
 " Ignore case sensitivity on searches
 set ignorecase
@@ -29,17 +41,17 @@ set ignorecase
 set number relativenumber
 
 " Automatically change directory to the current file.
-set autochdir
+" set autochdir
 
 " Enable mouse mode
 set mouse=a
 
 " Set highlight characters over 80
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+match OverLength /\%101v.\+/
 
 " Set text width to 80
-set tw=80
+set tw=100
 
 " Search and replace hotkey with \s
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
@@ -59,6 +71,9 @@ vnoremap <Leader>r c<C-r>0<Esc>
 
 " Enable paste mode
 nnoremap <Leader>p :set invpaste<cr>
+
+" Set tab autocompletion to display matches.
+set wildchar=<Tab> wildmenu wildmode=full
 
 " Diff unsaved changes
 function! s:DiffWithSaved()
@@ -120,6 +135,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'  " Fuzzy search files
+"Plug 'Valloric/YouCompleteMe'
+Plug 'rhysd/vim-clang-format'
+Plug 'kana/vim-operator-user'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-abolish'  " Substitute between camel and snake case.
+Plug 'luchermitte/lh-vim-lib'  " Required by alternate-lite
+Plug 'luchermitte/alternate-lite'  " Switch between .cpp and .h files.
+Plug 'kien/ctrlp.vim'  " Search files and buffers like sublime
+Plug 'tpope/vim-fugitive'  " vim git tools
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -131,9 +157,11 @@ call plug#end()
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 0
 let g:airline_powerline_fonts = 1
-"===============================================================
-" Pathogen Plugin Manager
-execute pathogen#infect()
 
-" Nerd Tree set default split to go to the right instead of left
-set splitright
+"  Vim clang format
+autocmd FileType c ClangFormatAutoEnable
+
+" Alternate-lite.
+" See: https://github.com/LucHermitte/lh-vim-lib/blob/master/doc/Project.md#11-what-is-a-project
+" See: https://github.com/LucHermitte/alternate-lite
+call lh#alternate#version()  " We need to call an lh#alternate function before setting any configs.

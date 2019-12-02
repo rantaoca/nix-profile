@@ -1,8 +1,22 @@
 [user]
 	name = Ran Tao
 	email = rantaoca@google.com
+
+[core]
+  editor = vim
+
+[merge]
+  conflictStyle = diff3
+
 [color]
 	ui = auto
+
 [alias]
 	s = status
-	amend = commit -a --amend --no-edit
+  amend = commit -a --amend --no-edit
+  ci = commit
+  co = checkout
+  graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg = log --oneline -n5
+
+

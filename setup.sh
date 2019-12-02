@@ -1,22 +1,24 @@
 #!/bin/bash
-apt-get install vim tmux git
 
-# Include .bashrc
+echo Installing packages...
+sudo apt-get install curl vim tmux git \
+  gnome-tweak-tool \ # For swapping esc/caps
+  fonts-powerline \  # For vim Airline font
+  htop              # For viewing processes
+
+sudo apt-get install ripgrep # Only available on Ubuntu 18+
+
+echo Adding .bashrc ...
 printf "\nsource ~/.ranconf/.bashrc\n" >> ~/.bashrc
 
-# Include .gitconfig
+echo Adding .gitconfig ...
 printf "\n[include]\n  path = ~/.ranconf/.gitconfig\n" >> ~/.gitconfig
 
-# Include .tmux.conf
+echo Adding .tmux.conf ...
 printf "\nsource-file ~/.ranconf/.tmux.conf\n" >> ~/.tmux.conf
 
-# Include .vimrc
+echo Adding .vimrc ...
 printf "\nsource ~/.ranconf/.vimrc\n" >> ~/.vimrc 
 
-# Install Vim Pathon Plugin Manager
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-# Vim Pathogen Plugin Manager Plugins
-git clone git://github.com/tpope/vim-abolish.git ~/.vim/bundle/vim-abolish
-git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+echo Downloading Tmux Plugin Manager...
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
