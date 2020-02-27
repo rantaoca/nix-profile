@@ -5,7 +5,8 @@ alias ranbash="vim ~/.ranconf/.bashrc && sourcebash"
 alias ranvim="vim ~/.ranconf/.vimrc"
 alias adblog="adb logcat -c; adb logcat"
 alias editranbash="vim ~/.ranconf/.bashrc; source ~/.bashrc"
-
+alias ranconfpush="(cd ~/.ranconf; git commit -a; git push)"
+alias ranconfpull="(cd ~/.ranconf; git pull)"
 
 # Cd into the latest modified directory
 cdlatest() {
