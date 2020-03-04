@@ -5,7 +5,8 @@ sudo apt-get install curl vim tmux git \
   gnome-tweak-tool `# For swapping esc/caps` \
   fonts-powerline  `# For vim Airline font` \
   htop             `# For viewing processes` \
-  xclip            `# For copying`
+  xclip            `# For copying` \
+  tree             `# For listing directories`
 
 echo Adding .bashrc ...
 printf "\nsource ~/.ranconf/.bashrc\n" >> ~/.bashrc
