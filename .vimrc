@@ -11,6 +11,11 @@ set hidden
 " Enable mouse mode
 set mouse=a
 
+" Enable xterm2 for mouse support for dragging. Only works with terminals
+" that support xterm2
+" https://superuser.com/questions/549930/cant-resize-vim-splits-inside-tmux
+set ttymouse=xterm2
+
 " Theme
 set background=dark
 set term=xterm-256color
@@ -19,7 +24,7 @@ set term=xterm-256color
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-"set textwidth=80
+set textwidth=80
 set wrap
 set expandtab
 set autoread
@@ -43,7 +48,7 @@ set ignorecase
 
 " Set highlight characters over X
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-au BufRead,BufNewFile *.py match OverLength /\%101v.\+/
+au BufRead,BufNewFile *.py match OverLength /\%81v.\+/
 au BufRead,BufNewFile *.cpp,*.h match OverLength /\%81v.\+/
 
 " Default clipboard to system clipboard
