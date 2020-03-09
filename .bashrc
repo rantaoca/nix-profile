@@ -11,6 +11,7 @@ alias ranconfpull="(cd ~/.ranconf; git pull; sourcebash)"
 # Rsync files and show progress bar
 ranrsync() {
   num_files=`rsync $1|wc -l`
+  echo Syncing $num_files files
   rsync -arv --stat --progress $1 $2 | pv -pel -s $num_files > /dev/null
 }
 
