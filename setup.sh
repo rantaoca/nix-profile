@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo Installing packages...
-sudo apt-get install curl vim tmux git \
+sudo apt-get install curl vim-gtk tmux git \
   gnome-tweak-tool `# For swapping esc/caps` \
   fonts-powerline  `# For vim Airline font` \
   htop             `# For viewing processes` \
