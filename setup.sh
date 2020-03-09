@@ -6,7 +6,9 @@ sudo apt-get install curl vim tmux git \
   fonts-powerline  `# For vim Airline font` \
   htop             `# For viewing processes` \
   xclip            `# For copying` \
-  tree             `# For listing directories`
+  tree             `# For listing directories` \
+  rsync            `# For syncing files` \
+  pv               `# For progress bar`
 
 echo Adding .bashrc ...
 printf "\nsource ~/.ranconf/.bashrc\n" >> ~/.bashrc
@@ -26,6 +28,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo Installing fuzzy reverse search...
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+echo Adding git prompt
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
 
 touch ~/.display.txt
 mkdir ~/.logs
