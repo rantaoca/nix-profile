@@ -12,7 +12,7 @@ alias ranconfpull="(cd ~/.ranconf; git pull; sourcebash)"
 ranrsync() {
   num_files=`rsync $1|wc -l`
   echo Syncing $num_files files
-  rsync -arv --stat --progress $1 $2 | pv -pel -s $num_files > /dev/null
+  rsync -arv --stats --human-readable $1 $2 | pv -pel -s $num_files > /dev/null
 }
 
 # Cd into the latest modified directory

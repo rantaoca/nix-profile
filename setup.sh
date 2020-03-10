@@ -1,14 +1,8 @@
 #!/bin/bash
 
 echo Installing packages...
-sudo apt-get install curl vim-gtk tmux git \
-  gnome-tweak-tool `# For swapping esc/caps` \
-  fonts-powerline  `# For vim Airline font` \
-  htop             `# For viewing processes` \
-  xclip            `# For copying` \
-  tree             `# For listing directories` \
-  rsync            `# For syncing files` \
-  pv               `# For progress bar`
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+bash ${__dir}/install.sh
 
 echo Adding .bashrc ...
 printf "\nsource ~/.ranconf/.bashrc\n" >> ~/.bashrc
