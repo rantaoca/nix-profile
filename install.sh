@@ -3,13 +3,14 @@ sudo apt-get install \
   vim-gtk \
   tmux \
   git \
-  gnome-tweak-tool `# For swapping esc/caps` \
-  fonts-powerline  `# For vim Airline font` \
-  htop             `# For viewing processes` \
-  xclip            `# For copying` \
-  tree             `# For listing directories` \
-  rsync            `# For syncing files` \
-  pv               `# For progress bar` \
+  gnome-tweak-tool `# Swapping esc/caps` \
+  fonts-powerline  `# Vim Airline font` \
+  htop             `# Viewing processes` \
+  iftop            `# Viewing network traffic` \
+  xclip            `# Copying` \
+  tree             `# Listing directories` \
+  rsync            `# Syncing files` \
+  pv               `# Progress bar` \
   silversearcher-ag`# Fast grep`
 
 sudo snap install \
