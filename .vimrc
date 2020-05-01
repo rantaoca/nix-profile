@@ -11,6 +11,11 @@ set hidden
 " Enable mouse mode
 set mouse=a
 
+" Enable xterm2 for mouse support for dragging. Only works with terminals
+" that support xterm2
+" https://superuser.com/questions/549930/cant-resize-vim-splits-inside-tmux
+set ttymouse=xterm2
+
 " Theme
 set background=dark
 set term=xterm-256color
@@ -19,7 +24,7 @@ set term=xterm-256color
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-"set textwidth=80
+set textwidth=80
 set wrap
 set expandtab
 set autoread
@@ -43,7 +48,7 @@ set ignorecase
 
 " Set highlight characters over X
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-au BufRead,BufNewFile *.py match OverLength /\%101v.\+/
+au BufRead,BufNewFile *.py match OverLength /\%81v.\+/
 au BufRead,BufNewFile *.cpp,*.h match OverLength /\%81v.\+/
 
 " Default clipboard to system clipboard
@@ -84,24 +89,29 @@ nnoremap <C-w>\| <C-w>v
 " ctrl-w _ to generate new horizontal split
 nnoremap <C-w>_ <C-w>s
 
-" Search and replace hotkey with \s
+" \s Search and replace hotkey
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
-" Paste from system clipboard
+" \p Paste from system clipboard
 nnoremap <Leader>p :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
-" Copy selection to system clipboard
-nnoremap <Leader>y :.w !pbcopy<CR><CR>
-vnoremap <Leader>y :'<,'>w !pbcopy<CR><CR>
-
-" Replace word with copy buffer 0\s
+" \r Replace word with copy buffer
 nnoremap <Leader>r ciw<C-r>0<Esc>
 
-" Replace selected text with copy buffer 0\s
+" \r Replace selected text with copy buffer
 vnoremap <Leader>r c<C-r>0<Esc>
 
-" Enable paste mode
+" \p Toggle paste mode
 nnoremap <Leader>p :set invpaste<cr>
+
+" K Grep for word under the cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" K Grep for selected text
+vnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" \f shortcut for grepping
+nnoremap <Leader>f :grep<SPACE>
 
 " Set tab autocompletion to display matches.
 set wildchar=<Tab> wildmenu wildmode=full
@@ -166,6 +176,21 @@ let g:netrw_sort_sequence = '[\/]$,\<core\%(\.\d\+\)\=\>,\.(h|cc)$,\.c$,\.cpp$,\
 
 
 "================================================================
+" Grep with Silver Searcher
+" https://thoughtbot.com/blog/faster-grepping-in-vim
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+
+"================================================================
 " Vim-Plug plugin manager
 
 " Auto install vim plug, plugin manager
@@ -196,6 +221,8 @@ Plug 'kien/ctrlp.vim'  " Search files and buffers like sublime
 Plug 'tpope/vim-fugitive'  " vim git tools
 Plug 'Konfekt/FastFold'  " Make foldmethod=syntax faster
 Plug 'vim-scripts/indentpython'  " Python indentation
+Plug 'terryma/vim-multiple-cursors'
+
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

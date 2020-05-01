@@ -8,6 +8,13 @@ alias editranbash="vim ~/.ranconf/.bashrc; source ~/.bashrc"
 alias ranconfpush="(cd ~/.ranconf; git commit -a; git push)"
 alias ranconfpull="(cd ~/.ranconf; git pull; sourcebash)"
 
+# Rsync files and show progress bar
+ranrsync() {
+  num_files=`rsync $1|wc -l`
+  echo Syncing $num_files files
+  rsync -arv --stats --human-readable $1 $2 | pv -pel -s $num_files > /dev/null
+}
+
 # Cd into the latest modified directory
 cdlatest() {
   cd `ls -td -- */ | head -n 1`
@@ -21,6 +28,7 @@ grephistory() {
 }
 
 # Custom prompt with git
+source ~/.git-prompt.sh
 PS1='\A \[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
 
 # Enable vim mode
