@@ -31,3 +31,8 @@ mkdir ~/.logs
 
 # Enable case-insensitive tab autocomplete
 echo "set completion-ignore-case on" >> ~/.inputrc
+
+echo "=========================================="
+echo "To finalize tmux plugin installation, use the following in a tmux session:"
+echo "ctrl-a I (capital)."
+echo
