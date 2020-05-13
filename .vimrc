@@ -76,9 +76,6 @@ hi Folded ctermbg=black
 set foldmethod=indent
 set foldlevel=99
 
-" Enable folding with the spacebar
-nnoremap <space> za
-
 
 "================================================================
 " Hotkeys
@@ -89,19 +86,25 @@ nnoremap <C-w>\| <C-w>v
 " ctrl-w _ to generate new horizontal split
 nnoremap <C-w>_ <C-w>s
 
-" \s Search and replace hotkey
+com! Ranvim edit ~/.ranconf/.vimrc
+com! Source source ~/.vimrc
+
+" Change leader key to space
+let mapleader = " "
+
+" <l>m Modify vim config
+nnoremap <Leader>m :RanVim<CR>
+
+" <l>s Search and replace hotkey
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
-" \p Paste from system clipboard
-nnoremap <Leader>p :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-
-" \r Replace word with copy buffer
+" <l>r Replace word with copy buffer
 nnoremap <Leader>r ciw<C-r>0<Esc>
 
-" \r Replace selected text with copy buffer
-vnoremap <Leader>r c<C-r>0<Esc>
+" <l>r Replace selected text with copy buffer
+"vnoremap <Leader>r c<C-r>0<Esc>
 
-" \p Toggle paste mode
+" <l>p Toggle paste mode
 nnoremap <Leader>p :set invpaste<cr>
 
 " K Grep for word under the cursor
@@ -110,14 +113,11 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " K Grep for selected text
 vnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" \f shortcut for grepping
+" <l>f shortcut for grepping
 nnoremap <Leader>f :grep<SPACE>
 
 " Set tab autocompletion to display matches.
 set wildchar=<Tab> wildmenu wildmode=full
-
-com! Ranvim edit ~/.ranconf/.vimrc
-com! Source source ~/.vimrc
 
 " Diff unsaved changes
 function! s:DiffWithSaved()
@@ -129,10 +129,7 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
-" \v to paste from clipboard.
-nnoremap <Leader>v :set paste<CR>
-
-" \y in visual mode to yank selection into tmux buffer
+" <l>y in visual mode to yank selection into tmux buffer
 function! TmuxSharedYank()
   " Send the contents of the 't' register to a temporary file, invoke
   " copy to tmux using load-buffer.
@@ -183,10 +180,10 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  "let g:ctrlp_use_caching = 0
 endif
 
 
@@ -237,6 +234,9 @@ let g:airline_powerline_fonts = 1
 
 "  Vim clang format
 autocmd FileType c,cpp ClangFormatAutoEnable
+
+" Ctrl-p ignore vendor
+let g:ctrlp_custom_ignore = 'vendor'
 
 " Alternate-lite config
 call lh#alternate#version()  " We need to call an lh#alternate function before setting any configs.

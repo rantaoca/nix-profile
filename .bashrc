@@ -7,6 +7,7 @@ alias adblog="adb logcat -c; adb logcat"
 alias editranbash="vim ~/.ranconf/.bashrc; source ~/.bashrc"
 alias ranconfpush="(cd ~/.ranconf; git commit -a; git push)"
 alias ranconfpull="(cd ~/.ranconf; git pull; sourcebash)"
+alias ranclip="xclip -selection clipboard"
 
 # Rsync files and show progress bar
 ranrsync() {
