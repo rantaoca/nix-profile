@@ -20,6 +20,7 @@ Keyboard & Mouse > Additional Layout Options > Caps Lock Behavior
 
 Ignore case for tab autocomplete
 ================================
+echo 'set completion-ignore-case On' >> /etc/inputrc
 
 
 
