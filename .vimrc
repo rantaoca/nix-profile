@@ -164,8 +164,14 @@ let g:NERDTreeMapJumpPrevSibling = '<Nop>'
 
 " Remove netrw directory listing header
 let g:netrw_banner = 0
-let g:netrw_browse_split = 4
+
+" Open files in same window
+let g:netrw_browse_split = 0
+
+" Set new window to 80% size, when using "o" or "s"
 let g:netrw_winsize = 80
+
+" Split to the right
 let g:netrw_altv = 1
 
 " Sort with files with .h and .cc next to each other.
@@ -242,4 +248,4 @@ let g:ctrlp_custom_ignore = 'vendor'
 call lh#alternate#version()  " We need to call an lh#alternate function before setting any configs.
 " alternate.lite search path for kinema. Searches .h and .cpp files in {name}/src and
 " {name}/include/{name}.
-"let g:alternates.searchpath = 'sfr:.,reg:#\([^/]*\)/include/[^/]*#\1/src#g#,reg:#\([^/]*\)/src$#\1/include/\1#g#'
+let g:alternates.searchpath = 'sfr:.,reg:#\([^/]*\)/include/[^/]*#\1/src#g#,reg:#\([^/]*\)/src$#\1/include/\1#g#'
