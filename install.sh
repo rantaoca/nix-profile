@@ -9,6 +9,7 @@ sudo apt-get install -y \
   fonts-powerline  `# Vim Airline font` \
   htop             `# Viewing processes` \
   iftop            `# Viewing network traffic` \
+  iotop            `# View disk usage` \
   xclip            `# Copying` \
   tree             `# Listing directories` \
   rsync            `# Syncing files` \

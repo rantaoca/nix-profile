@@ -23,4 +23,6 @@ Ignore case for tab autocomplete
 echo 'set completion-ignore-case On' >> /etc/inputrc
 
 
-
+Adjust monitor brightness tool
+==============================
+https://github.com/ddccontrol/ddccontrol-db#ddcci-control-database
