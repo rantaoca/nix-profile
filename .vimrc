@@ -34,11 +34,11 @@ set fileformat=unix
 " Set indent to 2 spaces
 au BufNewFile,BufRead *.cpp,*.h
     \ set tabstop=2 |
-    \ set softtabstop=2 |
+    
     \ set shiftwidth=2
 
 " Python config
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py,*.sh
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4
@@ -46,17 +46,19 @@ au BufNewFile,BufRead *.py
 " Ignore case sensitivity on searches
 set ignorecase
 
-" Set highlight characters over X
+" Set highlight characters over X, and trailing whitespace
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight ExtraWhitespace ctermbg=red ctermfg=white guibg=#592929
 au BufRead,BufNewFile *.py match OverLength /\%81v.\+/
 au BufRead,BufNewFile *.cpp,*.h match OverLength /\%81v.\+/
+au BufRead,BufNewFile * match ExtraWhitespace /\s\+$/
 
 " Default clipboard to system clipboard
 set clipboard=unnamedplus
 
 " Show invisible trailing charaters.
-" set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
-" set invlist 
+"set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+"set invlist 
 
 " Show hybrid line numbers
 " set number relativenumber
@@ -220,7 +222,6 @@ Plug 'Konfekt/FastFold'  " Make foldmethod=syntax faster
 Plug 'vim-scripts/indentpython'  " Python indentation
 Plug 'terryma/vim-multiple-cursors'
 
-
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -233,7 +234,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 0
 let g:airline_powerline_fonts = 1
 
 "  Vim clang format
-autocmd FileType c,cpp ClangFormatAutoEnable
+"autocmd FileType c,cpp ClangFormatAutoEnable
 
 " Ctrl-p ignore vendor
 let g:ctrlp_custom_ignore = 'vendor'
@@ -242,4 +243,4 @@ let g:ctrlp_custom_ignore = 'vendor'
 call lh#alternate#version()  " We need to call an lh#alternate function before setting any configs.
 " alternate.lite search path for kinema. Searches .h and .cpp files in {name}/src and
 " {name}/include/{name}.
-"let g:alternates.searchpath = 'sfr:.,reg:#\([^/]*\)/include/[^/]*#\1/src#g#,reg:#\([^/]*\)/src$#\1/include/\1#g#'
+let g:alternates.searchpath = 'sfr:.,reg:#\([^/]*\)/include/[^/]*#\1/src#g#,reg:#\([^/]*\)/src$#\1/include/\1#g#'
