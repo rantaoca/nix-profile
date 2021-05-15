@@ -16,6 +16,8 @@ set mouse=a
 " https://superuser.com/questions/549930/cant-resize-vim-splits-inside-tmux
 set ttymouse=xterm2
 
+set encoding=UTF-8
+
 " Theme
 set background=dark
 set term=xterm-256color
@@ -31,17 +33,11 @@ set autoread
 set autoindent
 set fileformat=unix
 
-" Set indent to 2 spaces
-au BufNewFile,BufRead *.cpp,*.h
-    \ set tabstop=2 |
-    
-    \ set shiftwidth=2
+" C++ config
+au BufNewFile,BufRead *.cpp,*.h set tabstop=4 softtabstop=4 shiftwidth=4
 
 " Python config
-au BufNewFile,BufRead *.py,*.sh
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4
+au BufNewFile,BufRead *.py,*.sh set tabstop=4 softtabstop=4 shiftwidth=4
 
 " Ignore case sensitivity on searches
 set ignorecase
@@ -54,7 +50,11 @@ au BufRead,BufNewFile *.cpp,*.h match OverLength /\%81v.\+/
 au BufRead,BufNewFile * match ExtraWhitespace /\s\+$/
 
 " Default clipboard to system clipboard
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
+
+" Copying to system clipboard is broken, use normal instead
+set clipboard=unnamed
+
 
 " Show invisible trailing charaters.
 "set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
@@ -120,6 +120,10 @@ nnoremap <Leader>f :grep<SPACE>
 
 " Set tab autocompletion to display matches.
 set wildchar=<Tab> wildmenu wildmode=full
+
+" Disable ctrl-a auto-increment number, to not accidentally activate it due to
+" tmux ctrl-a prefix
+map <C-a> <Nop>
 
 " Diff unsaved changes
 function! s:DiffWithSaved()
