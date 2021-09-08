@@ -50,10 +50,10 @@ au BufRead,BufNewFile *.cpp,*.h match OverLength /\%81v.\+/
 au BufRead,BufNewFile * match ExtraWhitespace /\s\+$/
 
 " Default clipboard to system clipboard
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 
 " Copying to system clipboard is broken, use normal instead
-set clipboard=unnamed
+"set clipboard=unnamed
 
 
 " Show invisible trailing charaters.
@@ -95,7 +95,7 @@ com! Source source ~/.vimrc
 let mapleader = " "
 
 " <l>m Modify vim config
-nnoremap <Leader>m :RanVim<CR>
+nnoremap <Leader>m :Ranvim<CR>
 
 " <l>s Search and replace hotkey
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
@@ -110,10 +110,12 @@ nnoremap <Leader>r ciw<C-r>0<Esc>
 nnoremap <Leader>p :set invpaste<cr>
 
 " K Grep for word under the cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+"nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :Ag <C-R><C-W><CR>:cw<CR>
 
 " K Grep for selected text
-vnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+"vnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+vnoremap K :Ag <C-R><C-W><CR>:cw<CR>
 
 " <l>f shortcut for grepping
 nnoremap <Leader>f :grep<SPACE>
@@ -126,6 +128,7 @@ set wildchar=<Tab> wildmenu wildmode=full
 map <C-a> <Nop>
 
 " Diff unsaved changes
+" Exit with "diffoff"
 function! s:DiffWithSaved()
   let filetype=&ft
   diffthis
